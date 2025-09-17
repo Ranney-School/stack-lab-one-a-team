@@ -9,22 +9,35 @@ public class MyStack<T> {
     }
 
     public void push(T item) {
-        // TODO
+        if (top == data.length) {
+            throw new IllegalStateException("Stack overflow: capacity reached");
+        }
+        data[top] = item;
+        top++;
     }
 
     public T pop() {
-        // TODO
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack underflow: empty stack");
+        }
+        top--;
+        T value = data[top];
+        data[top] = null; // help GC and avoid loitering
+        return value;
     }
 
     public T peek() {
-        // TODO
+        if (isEmpty()) {
+            throw new IllegalStateException("Cannot peek: empty stack");
+        }
+        return data[top - 1];
     }
 
     public boolean isEmpty() {
-        // TODO
+        return top == 0;
     }
 
     public int size() {
-        // TODO
+        return top;
     }
 }
