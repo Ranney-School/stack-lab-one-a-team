@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MyStack<T> {
     private T[] data;
     private int top;  // index of next open spot
@@ -10,7 +12,7 @@ public class MyStack<T> {
 
     public void push(T item) {
         if (top == data.length) {
-            throw new IllegalStateException("Stack overflow: capacity reached");
+            data = Arrays.copyOf(data, 2 * data.length);
         }
         data[top] = item;
         top++;
