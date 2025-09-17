@@ -21,11 +21,10 @@ public class MyStack<T> {
     public T pop() {
         if (isEmpty()) {
             throw new IllegalStateException("Stack underflow: empty stack");
+        } else {
+            top--;
         }
-        top--;
-        T value = data[top];
-        data[top] = null; // help GC and avoid loitering
-        return value;
+        return data[top];
     }
 
     public T peek() {

@@ -11,19 +11,27 @@ public class StackTester {
     stringStack.push("Alice");
     stringStack.push("Bob");
     System.out.println(stringStack.pop());  // should print "Bob"
+
+    System.out.println(checkBalanced("((()))")); //true
+    System.out.println(checkBalanced("((())")); //false
+    System.out.println(checkBalanced("(sakldf())d)")); //false
+    System.out.println(checkBalanced("(df((as)dsf))")); //true
   }
 
   public static boolean checkBalanced(String expr) {
     MyStack<Character> stack = new MyStack<>(expr.length());
     for (char c : expr.toCharArray()) {
-        if (c == '(') {
-            // TODO: push
-        } else if (c == ')') {
-            // TODO: check isEmpty, then pop
+      if (c == '(') {
+        stack.push('(');
+      } else if (c == ')') {
+        if (stack.isEmpty()) {
+          return false;
         }
+        stack.pop();
+      }
     }
-    // TODO: return whether stack is empty
-}
+    return stack.isEmpty();
+  }
 
   
 }
