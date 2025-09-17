@@ -21,10 +21,10 @@ public class MyStack<T> {
     }
 
     public boolean isEmpty() {
-        // TODO
+        return top == 0;
     }
 
     public int size() {
-        // TODO
+        return top;
     }
 }
